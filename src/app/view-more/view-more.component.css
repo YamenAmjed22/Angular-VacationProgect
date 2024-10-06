@@ -1,0 +1,13 @@
+.vacation-card {
+  transition: transform 0.3s;
+}
+
+.vacation-card:hover {
+  transform: scale(1.05);
+}
+
+.card-photo {
+  width: 100px; /* Set a fixed width for the profile picture */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular photo */
+}

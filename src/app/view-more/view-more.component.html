@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <nav class="navbar bg-body-tertiary mt-3">
+    <div class="container-fluid pb-2" style="border-bottom: 2px solid gray;">
+      <div>
+        <i class="bi bi-calendar2-check bi-5x" style="font-size: 2rem; color: green;"></i>
+        <a class="navbar-brand fw-bold">Vacation Requests</a>
+      </div>
+      <form class="d-flex" role="search" (ngSubmit)="search()">
+        <input class="form-control me-2" type="search" placeholder="Search" [(ngModel)]="searchQuery" name="searchQuery">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- Select All Checkbox -->
+  <div class="d-flex align-items-center mb-3">
+    <input type="checkbox" id="select-all" class="me-2" [(ngModel)]="selectAll" (change)="toggleSelectAll()" />
+    <label for="select-all" class="form-check-label fw-bold" style="font-size: 15px;">Select All</label>
+  </div>
+
+  <!-- Cards Container -->
+  <div class="row mt-4">
+    <div *ngFor="let card of pagedData; let i = index" class="col-md-6 col-lg-3 mb-3">
+      <div class="card vacation-card">
+        <div class="card-body">
+          <input type="checkbox" class="select-checkbox d-flex align-items-start" [(ngModel)]="card.selected" (change)="toggleCardSelection(i)" />
+          <div class="align-items-center">
+            <div class="text-center mb-3">
+              <img src="/assets/profile.jpg" alt="Profile" class="card-photo">
+            </div>
+            <div class="ms-3 text-start">
+              <h5 class="card-title text-center">{{ card.name }}</h5>
+              <p class="card-text mb-0 fw-lighter mt-2">Submitted on:</p>
+              <p class="mt-1 fw-bold mb-0">{{ card.date }}</p>
+              <p class="card-text fw-lighter mt-1 mb-0">Duration:</p>
+              <p class="fw-bold mb-0">{{ card.duration }}</p>
+              <p class="card-text fw-lighter mt-0 mb-0">Salary:</p>
+              <p class="fw-bold mt-1">{{ card.salary }}</p>
+            </div>
+          </div>
+          <div class="text-start mt-3">
+            <button class="btn btn-outline-success ms-auto mt-2 mt-md-0 me-2">Decline</button>
+            <button class="btn btn-success">Approve</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+      <li class="page-item" *ngFor="let page of totalPages; let i = index">
+        <a class="page-link" (click)="goToPage(i + 1)">{{ i + 1 }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
