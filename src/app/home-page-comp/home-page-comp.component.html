@@ -1,0 +1,48 @@
+
+<!-- start content -->
+<div class="container mt-5">
+  <!-- start welcome message and new request button -->
+  <div class="row">
+    <div class="col">
+      <h4 class="text mb-4 position-relative">{{ welcomeMassege }}</h4>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <button class="btn btn-success btn-custom-spacing" (click)="handleClick()">New Request</button>
+    </div>
+  </div>
+  <!-- end welcome message and new request button -->
+
+  <div class="container">
+    <!-- Flex container for horizontal layout -->
+    <div class="d-flex flex-wrap">
+      <!-- User Card -->
+      <app-user-card></app-user-card>
+      <!-- end user card  -->
+
+      <!-- Vacation Requests Card -->
+      <div id="vacation-requests-card" class="card bg-success text-white card-custom me-3 me-5 mt-4" style="width: 15rem;">
+        <div class="card-body shadow">
+          <h1 class="card-title" id="vacation-requests-count">0</h1>
+          <i class="bi bi-calendar2-check" style="font-size: 3rem;"></i>
+          <p class="card-text">Vacation Requests</p>
+        </div>
+      </div>
+
+      <!-- Leave Requests Card -->
+      <div id="leave-requests-card" class="card bg-success text-white card-custom mt-4" style="width: 15rem;">
+        <div class="card-body shadow">
+          <h1 class="card-title" id="leave-requests-count">0</h1>
+          <i class="bi bi-calendar2-date" style="font-size: 3rem;"></i>
+          <p class="card-text">Leave Requests</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider -->
+    <app-slider></app-slider>
+    <!-- end slider -->
+    <!-- vacation request start -->
+     <!-- <app-search></app-search> -->
+    <!-- vacation request end -->
+  </div>
+</div>

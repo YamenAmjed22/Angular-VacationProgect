@@ -1,0 +1,28 @@
+<div id="profile-card-container">
+    <div class="card bg-transparent shadow mb-3 card-custom me-5 mt-4" style="max-width: 100%;">
+        <div class="card-body">
+            <div class="d-flex align-items-center flex-wrap">
+                <img [src]="profileData.imageSrc" alt="Profile" class="profile-img rounded-circle" width="30" height="30">
+                <div class="ms-2">
+                    <h5 class="card-title">{{ profileData.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ profileData.title }}</h6>
+                </div>
+                <a (click)="goToProfile()" class="btn btn-outline-success ms-auto mt-2 mt-md-0">View Profile</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex align-items-center flex-wrap">
+                <i class="bi bi-person bi-5x me-2" style="font-size: 2.5rem; color:green;"></i>
+                <div class="ms-1 me-5">
+                    <p class="card-title fw-bold">Reporting To:</p>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ profileData.reportingTo }}</h6>
+                </div>
+                <i class="bi bi-star bi-5x ms-3 me-2" style="font-size: 2.5rem; color:green;"></i>
+                <div class="ms-1">
+                    <p class="card-title fw-bold">Corporate Level:</p>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">{{ profileData.level }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
