@@ -17,23 +17,23 @@
       <div class="card vacation-card">
         <div class="card-body">
           <div class="align-items-center">
-            <div class="text-center mb-3">
+            <div class="text-center mb-1">
               <img src="https://avatars.githubusercontent.com/u/165961256?v=4" alt="Profile" class="profile-img rounded-circle" width="50px" height="50px">
             </div>
-            <div class="text-start ms-3" >
-              <h5 class="card-title text-center mb-4" [innerHTML]="card.name | highlight:searchText"></h5>
-              <p class="card-text mb-0 fw-lighter mt-2" [innerHTML]="('Submitted on: ') | highlight:searchText"></p>
+            <div class="text-start " >
+              <h5 class="card-title text-center mb-1" [innerHTML]="card.name | highlight:searchText"></h5>
+              <p class="card-text mb-0 fw-lighter mt-3" [innerHTML]="('Submitted on: ') | highlight:searchText"></p>
               <p class="mt-1 fw-bold mb-0" [innerHTML]="card.date | highlight:searchText"></p>
-              <p class="card-text fw-lighter mt-1 mb-0" [innerHTML]="('Duration: ') | highlight:searchText"></p>
+              <p class="card-text fw-lighter mt-2 mb-0" [innerHTML]="('Duration: ') | highlight:searchText"></p>
 
               <p class="fw-bold mb-0"  [innerHTML]="card.duration | highlight:searchText" >{{ card.duration }}</p>
               <p class="card-text fw-lighter mt-0 mb-0" [innerHTML]="('salary: ') | highlight:searchText" ></p>
               <p class="fw-bold mt-1"  [innerHTML]="card.salary | highlight:searchText">{{ card.salary }}</p>
             </div>
           </div>
-          <div class="text-start mt-3 d-flex">
-            <button class="btn btn-outline-success ms-auto mt-2 me-2">Decline</button>
-            <button class="btn btn-success ms-auto mt-2 me-2">Approve</button>
+          <div class="text-start mt-2 d-flex ">
+            <button class="btn btn-outline-success ms-auto mt-2 me-0 fw-bold" style="font-size: 13px;">Decline</button>
+            <button class="btn btn-success ms-auto mt-2 me-5 fw-bold " style="font-size: 13px;" >Approve</button>
           </div>
         </div>
       </div>

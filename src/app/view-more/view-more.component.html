@@ -2,7 +2,7 @@
   <nav class="navbar bg-body-tertiary mt-3">
     <div class="container-fluid pb-2" style="border-bottom: 2px solid gray;">
       <div>
-        <i class="bi bi-calendar2-check bi-5x" style="font-size: 2rem; color: green;"></i>
+        <i class="bi bi-calendar2-check bi-5x me-2" style="font-size: 2rem; color: green;"></i>
         <a class="navbar-brand fw-bold">Vacation Requests</a>
       </div>
       <form class="d-flex" role="search" (ngSubmit)="search()">
@@ -29,13 +29,13 @@
               <img src="{{imageUrl}}" alt="Profile" class="profile-img rounded-circle">
             </div>
             <div class="ms-3 text-start">
-              <h5 class="card-title text-center">{{ card.name }}</h5>
-              <p class="card-text mb-0 fw-lighter mt-2">Submitted on:</p>
-              <p class="mt-1 fw-bold mb-0">{{ card.date }}</p>
-              <p class="card-text fw-lighter mt-1 mb-0">Duration:</p>
-              <p class="fw-bold mb-0">{{ card.duration }}</p>
-              <p class="card-text fw-lighter mt-0 mb-0">Salary:</p>
-              <p class="fw-bold mt-1">{{ card.salary }}</p>
+              <h5 class="card-title text-center" [innerHTML]="card.name | highlight:searchQuery">{{ card.name }}</h5>
+              <p class="card-text mb-0 fw-lighter mt-2" [innerHTML]="('Submitted on: ') | highlight:searchQuery">Submitted on:</p>
+              <p class="mt-1 fw-bold mb-0" [innerHTML]="card.date| highlight:searchQuery">{{ card.date }}</p>
+              <p class="card-text fw-lighter mt-1 mb-0" [innerHTML]="('Duration: ') | highlight:searchQuery">Duration:</p>
+              <p class="fw-bold mb-0" [innerHTML]="card.duration | highlight:searchQuery">{{ card.duration }}</p>
+              <p class="card-text fw-lighter mt-0 mb-0" [innerHTML]="('Salary: ') | highlight:searchQuery">Salary:</p>
+              <p class="fw-bold mt-1" [innerHTML]="card.name | highlight:searchQuery">{{ card.salary }}</p>
             </div>
           </div>
           <div class="text-start mt-3">

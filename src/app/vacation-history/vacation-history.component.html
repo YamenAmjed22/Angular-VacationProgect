@@ -1,43 +1,42 @@
-<div class="card bg-transparent shadow mb-3 card-custom me-5 mt-4 ms-4" style="max-width: 100%; ">
+<div class="card bg-transparent shadow mb-3 card-custom me-5 mt-4 ms-4 " style="max-width: 100%;">
 
-    <div class="card-body mt-3" style="background-color: rgba(236, 238, 238, 0.553);">
-        <nav class="navbar navbar-expand-lg" style="border-bottom: 2px solid gray;">
-            <div class="container-fluid d-flex justify-content-start">
-                <i class="bi bi-calendar2-check me-2" style="font-size: 2rem; color: green;"></i>
-                <a class="navbar-brand fw-bold" href="#">History</a>
+    <div class="card-body p-0" style="background-color: rgba(236, 238, 238, 0.553);">
+        <nav class="navbar navbar-expand-lg p-3 " style="border-bottom: 2px solid gray;">
+            <div class="container-fluid d-flex justify-content-start p-0 ">
+                <i class="bi bi-calendar2-check me-2 ml-5" style="font-size: 2rem; color: green;"></i>
+                <a class="navbar-brand fw-bold ml-5" href="#">History</a>
             </div>
         </nav>
 
-        <div class="row mt-4" >
-            <div class="col-md-3" *ngFor="let vacation of firstRowVacations" >
-            <div class="card mb-3" >
-                <div class="card-body shadow" style="font-size: 12px;">
-                <h5 class="card-title fw-bold">{{ vacation.type }}</h5>
-                <p class="card-text mb-1"><strong>Date From:</strong> {{ vacation.dateFrom }}</p>
-                <p class="card-text mb-1"><strong>Date To:</strong> {{ vacation.dateTo }}</p>
-                <p class="card-text mb-1"><strong>Duration:</strong> {{ vacation.duration }}</p>
-                <p class="card-text"><strong>Approved By:</strong> {{ vacation.approvedBy }}</p>
+        <div class="row mt-4 p-3">
+            <div class="col-md-3" *ngFor="let vacation of firstRowVacations">
+                <div class="card mb-3">
+                    <div class="card-body shadow" style="font-size: 12px;">
+                        <h5 class="card-title fw-bold">{{ vacation.type }}</h5>
+                        <p class="card-text mb-1"><strong>Date From:</strong> {{ vacation.dateFrom }}</p>
+                        <p class="card-text mb-1"><strong>Date To:</strong> {{ vacation.dateTo }}</p>
+                        <p class="card-text mb-1"><strong>Duration:</strong> {{ vacation.duration }}</p>
+                        <p class="card-text"><strong>Approved By:</strong> {{ vacation.approvedBy }}</p>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
-        
-        <div class="row mt-4">
-            <div class="col-md-3" *ngFor="let vacation of secondRowVacations" >
-            <div class="card mb-3">
-                <div class="card-body shadow" style="font-size: 12px;">
-                <h5 class="card-title fw-bold">{{ vacation.type }}</h5>
-                <p class="card-text mb-1"><strong>Date From:</strong> {{ vacation.dateFrom }}</p>
-                <p class="card-text mb-1"><strong>Date To:</strong> {{ vacation.dateTo }}</p>
-                <p class="card-text mb-1"><strong>Duration:</strong> {{ vacation.duration }}</p>
-                <p class="card-text"><strong>Approved By:</strong> {{ vacation.approvedBy }}</p>
+
+        <div class="row mt-4 p-3">
+            <div class="col-md-3" *ngFor="let vacation of secondRowVacations">
+                <div class="card mb-3">
+                    <div class="card-body shadow" style="font-size: 12px;">
+                        <h5 class="card-title fw-bold">{{ vacation.type }}</h5>
+                        <p class="card-text mb-1"><strong>Date From:</strong> {{ vacation.dateFrom }}</p>
+                        <p class="card-text mb-1"><strong>Date To:</strong> {{ vacation.dateTo }}</p>
+                        <p class="card-text mb-1"><strong>Duration:</strong> {{ vacation.duration }}</p>
+                        <p class="card-text"><strong>Approved By:</strong> {{ vacation.approvedBy }}</p>
+                    </div>
                 </div>
             </div>
-            </div>
             <div class="d-flex mt-4 justify-content-end">
-            <a href="#" class="text-success" style="font-size: 1.2rem; text-decoration: none;">View More ></a>
+                <a href="#" class="text-success" style="font-size: 1.2rem; text-decoration: none;">View More ></a>
             </div>
         </div>
     </div>
 </div>
-    

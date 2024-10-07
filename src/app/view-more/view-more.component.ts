@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HighlightPipe } from '../highlited-pipes.pipe';
 
 interface VacationCard {
   name: string;
@@ -15,7 +16,7 @@ interface VacationCard {
   selector: 'app-vacation-requests',
   templateUrl: './view-more.component.html',
   styleUrls: ['./view-more.component.css'],
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule , HighlightPipe]
 })
 export class ViewMoreComponent implements OnInit {
   imageUrl: string = "https://avatars.githubusercontent.com/u/165961256?size=40";
