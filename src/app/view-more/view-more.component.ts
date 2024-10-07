@@ -18,6 +18,7 @@ interface VacationCard {
   imports: [FormsModule, CommonModule]
 })
 export class ViewMoreComponent implements OnInit {
+  imageUrl: string = "https://avatars.githubusercontent.com/u/165961256?size=40";
   // Array of vacation cards
   cards: VacationCard[] = [
     { name: "John Doe", date: "2024-08-10", duration: "11 days", salary: "$400" },

@@ -26,7 +26,7 @@
           <input type="checkbox" class="select-checkbox d-flex align-items-start" [(ngModel)]="card.selected" (change)="toggleCardSelection(i)" />
           <div class="align-items-center">
             <div class="text-center mb-3">
-              <img src="/assets/profile.jpg" alt="Profile" class="card-photo">
+              <img src="{{imageUrl}}" alt="Profile" class="profile-img rounded-circle">
             </div>
             <div class="ms-3 text-start">
               <h5 class="card-title text-center">{{ card.name }}</h5>
