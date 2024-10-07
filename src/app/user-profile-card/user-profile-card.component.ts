@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-
 @Component({
   standalone :true , 
   selector: 'user-profile-card',
   templateUrl: './user-profile-card.component.html',
-  styleUrls: ['./user-profile-card.component.css']
+  styleUrls: ['./user-profile-card.component.css'],
+  imports: []
 })
 export class ProfileCardComponent {
   // Define the profile data
