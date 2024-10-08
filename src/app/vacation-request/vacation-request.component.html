@@ -1,44 +1,29 @@
 <nav class="navbar bg-body-tertiary mt-3">
-    <div class="container-fluid pb-0" style="border-bottom: 2px solid rgb(137, 137, 137);">
-      <div class="d-flex align-items-center mb-4 w-100">
-        <i class="bi bi-calendar2-check" style="color: green; font-size: 2rem;"></i>
-        <p class="mt-2 ms-2 fw-bold" style="font-size: 20px;color: rgb(0, 0, 0);">Vacation Requests</p>
-        <div class="ms-auto d-flex">
-          <input class="form-control me-2" [(ngModel)]="searchText" placeholder="Search..." style="width: 300px;" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </div>
-      </div>       
-    </div>
-  </nav>
-
-
-  <div class="row">
-    <div class="col" *ngFor="let card of cardData">
-      <div class="card vacation-card">
-        <div class="card-body">
-          <div class="align-items-center">
-            <div class="text-center mb-1">
-              <img src="https://avatars.githubusercontent.com/u/165961256?v=4" alt="Profile" class="profile-img rounded-circle" width="50px" height="50px">
-            </div>
-            <div class="text-start " >
-              <h5 class="card-title text-center mb-1" [innerHTML]="card.name | highlight:searchText"></h5>
-              <p class="card-text mb-0 fw-lighter mt-3" [innerHTML]="('Submitted on: ') | highlight:searchText"></p>
-              <p class="mt-1 fw-bold mb-0" [innerHTML]="card.date | highlight:searchText"></p>
-              <p class="card-text fw-lighter mt-2 mb-0" [innerHTML]="('Duration: ') | highlight:searchText"></p>
-
-              <p class="fw-bold mb-0"  [innerHTML]="card.duration | highlight:searchText" >{{ card.duration }}</p>
-              <p class="card-text fw-lighter mt-0 mb-0" [innerHTML]="('salary: ') | highlight:searchText" ></p>
-              <p class="fw-bold mt-1"  [innerHTML]="card.salary | highlight:searchText">{{ card.salary }}</p>
-            </div>
-          </div>
-          <div class="text-start mt-2 d-flex ">
-            <button class="btn btn-outline-success ms-auto mt-2 me-0 fw-bold" style="font-size: 13px;">Decline</button>
-            <button class="btn btn-success ms-auto mt-2 me-5 fw-bold " style="font-size: 13px;" >Approve</button>
-          </div>
-        </div>
+  <div class="container-fluid pb-0" style="border-bottom: 2px solid rgb(137, 137, 137);">
+    <div class="d-flex align-items-center mb-4 w-100">
+      <i class="bi bi-calendar2-check" style="color: green; font-size: 2rem;"></i>
+      <p class="mt-2 ms-2 fw-bold" style="font-size: 20px; color: rgb(0, 0, 0);">Vacation Requests</p>
+      <div class="ms-auto d-flex">
+        <input class="form-control me-2" [(ngModel)]="searchText" placeholder="Search..." style="width: 300px;" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
       </div>
-    </div>
-    <div class="d-flex justify-content-end mt-3">
-        <a (click)="goToViewMore()" class="text-success mb-2" style="font-size: 1.2rem; text-decoration: none;">View More ></a>
-    </div>
+    </div>       
   </div>
+</nav>
+
+<div class="row">
+  <div class="col" *ngFor="let card of cardData">
+    <app-vacation-request-card
+      [name]="card.name" 
+      [submittedDate]="card.date" 
+      [duration]="card.duration" 
+      [salary]="card.salary" 
+      [searchText]="searchText"  
+      (approve)="onApprove(card)" 
+      (decline)="onDecline(card)">
+    </app-vacation-request-card>
+  </div>
+  <div class="d-flex justify-content-end mt-3">
+    <a (click)="goToViewMore()" class="text-success mb-2" style="font-size: 1.2rem; text-decoration: none;">View More ></a>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfileDataService } from '../user-profile-data.service';
+import { UserProfileDataService } from '../profile-service/user-profile-data.service';
 @Component({
   standalone: true,
   selector: 'user-profile-card',

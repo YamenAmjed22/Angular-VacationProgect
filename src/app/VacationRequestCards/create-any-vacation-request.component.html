@@ -1,0 +1,23 @@
+<div class="card vacation-card">
+  <div class="card-body">
+    <div class="align-items-center">
+      <div class="text-center mb-1">
+        <img src="https://avatars.githubusercontent.com/u/165961256?v=4" alt="Profile" class="profile-img rounded-circle" width="50px" height="50px">
+      </div>
+      <div class="text-start">
+        <h5 class="card-title text-center" [innerHTML]="name | highlight:searchText"></h5>
+        <p class="card-text mb-0 fw-lighter mt-3">Submitted on:</p>
+        <p class="card-text mb-0 fw-bold mb-2"><span [innerHTML]="submittedDate | highlight:searchText"></span></p>
+        <p class="mt-1 fw-lighter mb-0">Duration:</p>
+        <p class="card-text mb-0 fw-bold mb-2"><span [innerHTML]="duration | highlight:searchText"></span></p>
+        <p class="card-text fw-lighter mt-0 mb-0">Salary:</p>
+        <p class="card-text mb-0 fw-bold mb-2"><span [innerHTML]="salary | highlight:searchText"></span></p>
+
+      </div>
+    </div>
+    <div class="text-start mt-2 d-flex">
+      <button class="btn btn-outline-success ms-auto mt-2 me-0 fw-bold" style="font-size: 13px;" (click)="onDecline()">Decline</button>
+      <button class="btn btn-success ms-auto mt-2 me-5 fw-bold" style="font-size: 13px;" (click)="onApprove()">Approve</button>
+    </div>
+  </div>
+</div>

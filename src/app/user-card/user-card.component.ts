@@ -1,29 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-
-
+import { UserInformationsService } from '../user-informations.service';
+import { UserInformationInHome } from '../userInformationInHome.model';
 @Component({
+  standalone:true,
   selector: 'app-user-card',
-  standalone: true,
-  imports: [],
   templateUrl: './user-card.component.html',
-  styleUrl: './user-card.component.css'
+  styleUrls: ['./user-card.component.css'],
 })
-export class UserCardComponent {
-  constructor(private router: Router){}
-  
-  goToProfile(){
-    this.router.navigate(["/profile"])
-  }
-  
-  profileData = {
-    name: "Yamen Amjed",
-    title: "Java Developer",
-    imageSrc: "https://avatars.githubusercontent.com/u/165961256?v=4",
-    reportingTo: "Salwa Assem",
-    level: "level 10",
-    viewProfileLink: "viewProfile.html"
-  };
+export class UserCardComponent implements OnInit {
+  profileData!: UserInformationInHome; // Use the interface here
 
+  constructor(private userInfoService: UserInformationsService, private router: Router) {}
+
+  ngOnInit() {
+    // Fetch the profile data using the service
+    this.userInfoService.getProfileData().subscribe(
+      (data) => {
+        this.profileData = data; // Strongly typed assignment
+      },
+      (error) => {
+        console.error('Error fetching profile data', error);
+      }
+    );
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
 }

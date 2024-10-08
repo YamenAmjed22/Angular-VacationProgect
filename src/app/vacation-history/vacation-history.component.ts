@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VacationHistoryService } from '../vacation-history.service';
+import { VacationHistoryService } from '../profile-service/vacation-history.service';
 import { CommonModule } from '@angular/common'; 
 @Component({
   standalone:true,

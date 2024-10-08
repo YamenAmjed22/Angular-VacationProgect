@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VacationRequestService } from '../vacation-request.service'; // Import the service
+import { VacationRequestService } from '../profile-service/vacation-request.service'; // Import the service
 import { CommonModule } from '@angular/common';
 
 @Component({

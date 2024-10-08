@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HighlightPipe } from '../highlited-pipes.pipe';
+import { HighlightPipe } from '../highlited-pipes/highlited-pipes.pipe';
+import { VacationRequestCardComponent } from '../VacationRequestCards/create-any-vacation-request.component';
+
 
 interface VacationCard {
   name: string;
@@ -16,10 +19,14 @@ interface VacationCard {
   selector: 'app-vacation-requests',
   templateUrl: './view-more.component.html',
   styleUrls: ['./view-more.component.css'],
-  imports: [FormsModule, CommonModule , HighlightPipe]
+  imports: [FormsModule, CommonModule, HighlightPipe,VacationRequestCardComponent]
 })
 export class ViewMoreComponent implements OnInit {
   imageUrl: string = "https://avatars.githubusercontent.com/u/165961256?size=40";
+
+  @Input() selectAll: boolean = false;
+  @Output() selectAllChange = new EventEmitter<boolean>();
+
   // Array of vacation cards
   cards: VacationCard[] = [
     { name: "John Doe", date: "2024-08-10", duration: "11 days", salary: "$400" },
@@ -34,7 +41,6 @@ export class ViewMoreComponent implements OnInit {
     { name: "Isaac Brown", date: "2024-08-19", duration: "2 days", salary: "$400" },
     { name: "Jack Black", date: "2024-08-20", duration: "1 day", salary: "$400" },
     { name: "Laura Green", date: "2024-08-21", duration: "12 days", salary: "$500" },
-    // Add more cards here...
   ];
 
   cardsPerPage = 6;
@@ -42,7 +48,8 @@ export class ViewMoreComponent implements OnInit {
   pagedData: VacationCard[] = [];
   searchQuery = '';
   totalPages: number[] = [];
-  selectAll = false;
+
+  constructor(private router: Router) {} // Inject Router
 
   ngOnInit(): void {
     this.initPagination();
@@ -55,11 +62,16 @@ export class ViewMoreComponent implements OnInit {
 
   displayPage(page: number) {
     this.currentPage = page;
+    const filteredCards = this.getFilteredCards();
+
+    if (filteredCards.length === 0) {
+      this.pagedData = [];
+      this.updateTotalPages(0);
+      return;
+    }
+
     const start = (page - 1) * this.cardsPerPage;
     const end = start + this.cardsPerPage;
-
-    // Check if there is a search query; if so, display filtered cards
-    const filteredCards = this.getFilteredCards();
     this.pagedData = filteredCards.slice(start, end);
     this.updateSelectAll();
   }
@@ -74,9 +86,9 @@ export class ViewMoreComponent implements OnInit {
   }
 
   search() {
-    this.currentPage = 1; // Reset to the first page on search
-    this.displayPage(this.currentPage); // Update displayed cards based on the current page
-    this.updateTotalPages(this.getFilteredCards().length); // Update total pages based on filtered cards
+    this.currentPage = 1;
+    this.displayPage(this.currentPage);
+    this.updateTotalPages(this.getFilteredCards().length);
   }
 
   updateTotalPages(cardCount: number) {
@@ -84,20 +96,37 @@ export class ViewMoreComponent implements OnInit {
   }
 
   toggleSelectAll() {
-    this.cards.forEach(card => card.selected = this.selectAll); // Select or deselect all cards
+    this.cards.forEach(card => card.selected = this.selectAll);
+    this.selectAllChange.emit(this.selectAll);
   }
 
   toggleCardSelection(index: number) {
     const cardIndex = (this.currentPage - 1) * this.cardsPerPage + index;
-    this.cards[cardIndex].selected = !this.cards[cardIndex].selected;
-    this.updateSelectAll(); // Update the Select All checkbox state
+    this.cards[cardIndex].selected = !this.cards[cardIndex].selected; // Directly toggle the selected state
+    this.updateSelectAll();
   }
 
   updateSelectAll() {
-    this.selectAll = this.pagedData.every(card => card.selected); // Check if all cards on the page are selected
+    this.selectAll = this.pagedData.every(card => card.selected);
+    this.selectAllChange.emit(this.selectAll);
   }
 
   goToPage(page: number) {
     this.displayPage(page);
+  }
+
+  // Navigate to the next route with selected cards
+  goToSelected() {
+    const selectedCards = this.cards.filter(card => card.selected);
+    this.router.navigate(['/your-next-route'], { queryParams: { selected: JSON.stringify(selectedCards) } });
+  }
+  onApprove(card: any) {
+    console.log(`Approved request from ${card.name}`);
+    // Handle approval logic
+  }
+
+  onDecline(card: any) {
+    console.log(`Declined request from ${card.name}`);
+    // Handle decline logic
   }
 }
