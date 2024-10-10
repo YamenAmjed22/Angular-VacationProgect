@@ -1,14 +1,15 @@
 .vacation-card {
-  transition: transform 0.3s;
+  position: relative;
+  padding-top: 2rem; /* Adjust for top spacing */
 }
 
-.vacation-card:hover {
-  transform: scale(1.05);
+.form-check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
 }
 
-.card-photo {
-  width: 100px; /* Set a fixed width for the profile picture */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 50%; /* Circular photo */
+.card-body {
+  padding-top: 1rem; /* Adjust padding for card content */
 }
-

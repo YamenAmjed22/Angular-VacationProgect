@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { HighlightPipe } from '../highlited-pipes/highlited-pipes.pipe';
 import { VacationRequestCardComponent } from '../VacationRequestCards/create-any-vacation-request.component';
 
-
 interface VacationCard {
   name: string;
   date: string;
@@ -19,7 +18,7 @@ interface VacationCard {
   selector: 'app-vacation-requests',
   templateUrl: './view-more.component.html',
   styleUrls: ['./view-more.component.css'],
-  imports: [FormsModule, CommonModule, HighlightPipe,VacationRequestCardComponent]
+  imports: [FormsModule, CommonModule, HighlightPipe, VacationRequestCardComponent]
 })
 export class ViewMoreComponent implements OnInit {
   imageUrl: string = "https://avatars.githubusercontent.com/u/165961256?size=40";
@@ -49,7 +48,7 @@ export class ViewMoreComponent implements OnInit {
   searchQuery = '';
   totalPages: number[] = [];
 
-  constructor(private router: Router) {} // Inject Router
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.initPagination();
@@ -102,7 +101,7 @@ export class ViewMoreComponent implements OnInit {
 
   toggleCardSelection(index: number) {
     const cardIndex = (this.currentPage - 1) * this.cardsPerPage + index;
-    this.cards[cardIndex].selected = !this.cards[cardIndex].selected; // Directly toggle the selected state
+    this.cards[cardIndex].selected = !this.cards[cardIndex].selected;
     this.updateSelectAll();
   }
 
@@ -115,18 +114,16 @@ export class ViewMoreComponent implements OnInit {
     this.displayPage(page);
   }
 
-  // Navigate to the next route with selected cards
   goToSelected() {
     const selectedCards = this.cards.filter(card => card.selected);
     this.router.navigate(['/your-next-route'], { queryParams: { selected: JSON.stringify(selectedCards) } });
   }
+
   onApprove(card: any) {
     console.log(`Approved request from ${card.name}`);
-    // Handle approval logic
   }
 
   onDecline(card: any) {
     console.log(`Declined request from ${card.name}`);
-    // Handle decline logic
   }
 }
